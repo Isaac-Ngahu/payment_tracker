@@ -13,5 +13,4 @@ def insert_response():
 def access_token():
     token = get_access_token()
     return token, 200
-
-app.run(host="0.0.0.0",debug=True)
+app.run(host="0.0.0.0",debug=False)
