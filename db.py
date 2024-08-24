@@ -12,12 +12,13 @@ def response_insert(data):
     sql = "INSERT INTO payment_details(message) VALUES(%s)"
     # sql2 = "SELECT * FROM payment_details"
     values = (data,)
+    print(data)
     cursor = connection.cursor()
     try:
         cursor.execute(sql,values)
         connection.commit()
         # print("done")
-        return 1
+        return "inserted"
     except Exception as e:
         print(str(e))
     finally:
@@ -37,4 +38,8 @@ def get_access_token():
     finally:
         cursor.close()
 
-get_access_token()
+test_data = {
+"body":"testing..."
+}
+
+print(response_insert(test_data))
