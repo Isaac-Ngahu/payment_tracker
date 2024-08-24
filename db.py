@@ -38,8 +38,20 @@ def get_access_token():
     finally:
         cursor.close()
 
-test_data = {
-"body":"testing..."
-}
+def get_latest_response():
+    sql = "SELECT message FROM payment_details ORDER BY created_at DESC LIMIT 1"
+    cursor = connection.cursor()
+    try:
+        cursor.execute(sql)
+        response = cursor.fetchall()
+        return response
+    except Exception as e:
+        print(str(e))
+    finally:
+        cursor.close()
 
-print(response_insert(test_data))
+# test_data = {
+# "body":"testing..."
+# }
+
+# print(response_insert(test_data))

@@ -1,7 +1,7 @@
 from flask import Flask,json
 from flask import request
 from flask_cors import  CORS
-from db import response_insert,get_access_token
+from db import response_insert,get_access_token,get_latest_response
 app = Flask(__name__)
 CORS(app)
 @app.route("/insert_response",methods=['POST'])
@@ -16,4 +16,10 @@ def insert_response():
 def access_token():
     token = get_access_token()
     return token, 200
+
+@app.route("/get_response",methods=['GET'])
+def get_payment_response():
+    response = get_latest_response()
+    return response
+
 app.run(host="0.0.0.0",debug=False)
