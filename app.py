@@ -1,4 +1,4 @@
-from flask import Flask,json
+from flask import Flask,json,jsonify
 from flask import request
 from flask_cors import  CORS
 from db import response_insert,get_access_token,get_latest_response
@@ -15,7 +15,9 @@ def insert_response():
 @app.route("/get_access_token",methods=['GET'])
 def access_token():
     token = get_access_token()
-    return token, 200
+    return jsonify({
+               "accessToken": token
+            }), 200
 
 @app.route("/get_response",methods=['GET'])
 def get_payment_response():
