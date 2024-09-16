@@ -4,7 +4,7 @@ from flask_cors import  CORS
 from db import response_insert,get_access_token,get_latest_response
 app = Flask(__name__)
 CORS(app)
-@app.route("/insert_response",methods=['POST'])
+@app.route("/record_response",methods=['POST'])
 def insert_response():
     data = request.get_json()
     json_data = json.dumps(data["body"])
